@@ -1,0 +1,52 @@
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color:cornflowerblue;
+  color:cornsilk;
+}
+
+#main-content{
+  background-color: rgb(53, 135, 207);
+}
+
+h1{
+  text-align: center;
+}
+
+#divEl{
+  position: relative;
+  border: cornsilk;
+}
+
+#leftImg{
+  position: absolute;
+  height: 300px;
+  margin-left: 150px;
+}
+#centerImg{
+  position: absolute;
+  height: 300px;
+  margin-left: 500px;
+}
+#rightImg{
+  position: absolute;
+  height: 300px;
+  margin-left: 850px;
+}
+
+button{
+  width:80px;
+  height: 40px;
+  border-radius: 5px;
+
+  background-color:cornsilk;
+  color: cornflowerblue;
+  text-align: center;
+  font-size: 100%;
+
+  margin-top: 250px;
+  margin-left: 50%;
+}
+button:hover{
+  background-color: rgb(53, 135, 207);
+}
+
