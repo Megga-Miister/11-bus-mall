@@ -43,10 +43,6 @@ function getRandomIndex() {
 }
 
 function getUniqueImages() {
-  displayProduct1 = 0;
-  displayProduct2 = 0;
-  displayProduct3 = 0;
-
   //Shannon helped me change to a while loop as I was trying to run this as an if...else if 
   while (displayProduct1 === displayProduct2 || displayProduct2 === displayProduct3 || displayProduct1 === displayProduct3){
     displayProduct1 = products[getRandomIndex()].src;
@@ -57,6 +53,29 @@ function getUniqueImages() {
   threeProductDisplay.push(displayProduct1, displayProduct2, displayProduct3);
   return threeProductDisplay; 
 }
+
+function clickTracker(event) {
+  var displayImgId = event.target.id;
+  var diplayImgName = event.target.name;
+ 
+   //if user does not click on an image run alert
+   if (displayImgId != leftImgEl || displayImgId != centerImgEl || displayImgId != rightImgEl) {
+    alert ("Be sure to click on a product image to make your selection.");
+   //otherwise as long as total clicks are less that 26, find the corresponding product object in array and add a vote
+   } else if (totalClicks < 26) {
+     for (i = 0; i < products.length; i++)
+       if (diplayImgName === products[i].name) {
+         products[i].timesClicked++;
+         totalClicks++;
+       } else {
+         displayProduct1.removeEventListener('click', getRandomIndex);
+         displayProduct2.removeEventListener('click', getRandomIndex)
+         displayProduct3.removeEventListener('click', getRandomIndex)
+         var resultsButtonEl = document.getElementById("results");
+         resultsButtonEl.label = "Results";
+     } 
+   }
+ };
 
 function renderImages() {
   getUniqueImages();
@@ -78,38 +97,61 @@ function renderImages() {
   divEl.appendChild(leftImgEl);  //append images to div
   divEl.appendChild(centerImgEl);
   divEl.appendChild(rightImgEl);
+  mainEl.appendChild(productsChart);
 }
 
 renderImages();
-
-function clickTracker(event) {
- var displayImgId = event.target.id;
- var diplayImgName = event.target.name;
-
-  //if user does not click on an image run alert
-  if (displayImgId != leftImgEl || displayImgId != centerImgEl || displayImgId != rightImgEl) {
-   alert ("Be sure to click on a product image to make your selection.");
-  //otherwise as long as total clicks are less that 26, find the corresponding product object in array and add a vote
-  } else if (totalClicks < 26) {
-    for (i = 0; i < products.length; i++)
-      if (diplayImgName === products[i].name) {
-        products[i].timesClicked++;
-        totalClicks++;
-      } else {
-        var resultsButtonEl = document.getElementById("results");
-        resultsButtonEl.label = "Results";
-    } 
-  }
-};
 
 displayProduct1.addEventListener('click',clickTracker);
 displayProduct2.addEventListener('click',clickTracker);
 displayProduct3.addEventListener('click',clickTracker);
 
-//   clickHandler: function(event) {
+// var ctx = document.getElementById("productsChart").getContext('2d');
 
-//   };
-// },
+// var chartConfig = {
+//   type: 'bar',
+//   data: {
+//     labels: colors,
+//     datasets: [{
+//       label: 'Product Preference Tracker',
+//       data: new Array(products.length).fill(0),
+//       backgroundColor: [
+//         '#0B132B',
+//         '#1c2541',
+//         '#3A506B',
+//         '#5BC0BE',
+//         '#6FFFE9',
+//         '#78C9E6',
+//         '#12A6D8',
+//         '#005189',
+//         '#54BDE1',
+//         '#8ACEE5',
+//         '#880D1E',
+//         '#DD2D4A',
+//         '#F26A8D',
+//         '#F49CBB',
+//         '#CBEEF3',
+//         '#FA558B',
+//         '#F97BA6',
+//         '#FEFFBB',
+//         '#FFF779',
+//         '#FBDE18',
+//       ],
+//            borderWidth: 1
+//     }]
+//   },
+//   options: {
+//     scales: {
+//       yAxes: [{
+//         ticks: {
+//           beginAtZero: true
+//         }
+//       }]
+//     }
+//   }
+// };
+
+// return new chartConfig(ctx, chartConfig);
 
 
 console.log(products);
