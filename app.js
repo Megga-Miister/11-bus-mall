@@ -102,6 +102,10 @@ function clickTracker(event) {
   }
 };
 
+displayProduct1.addEventListener('click',clickTracker);
+displayProduct2.addEventListener('click',clickTracker);
+displayProduct3.addEventListener('click',clickTracker);
+
 //   clickHandler: function(event) {
 
 //   };
