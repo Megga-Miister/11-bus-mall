@@ -155,3 +155,11 @@ displayProduct3.addEventListener('click',clickTracker);
 
 
 console.log(products);
+
+function saveresults(){
+  localStorage.setItem('name', JSON.stringify(name));
+  localStorage.setItem('name', JSON.stringify(src));
+  localStorage.setItem('name', JSON.stringify(timesClicked));
+  localStorage.setItem('name', JSON.stringify(timesShown));
+  localStorage.setItem('name', JSON.stringify(totalClicks));
+}
